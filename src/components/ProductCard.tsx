@@ -23,7 +23,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-3xl border border-forest/5 bg-white shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:shadow-cardHover">
-      <div className="relative overflow-hidden">
+      <div className="group/image relative overflow-hidden">
         <PlantArt
           variant={product.art}
           potColor={product.potColor}

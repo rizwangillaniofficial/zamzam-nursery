@@ -42,7 +42,7 @@ export default function NewArrivals() {
               const wished = isWished(p.id);
               return (
                 <article key={p.id} className="group w-64 shrink-0 snap-start overflow-hidden rounded-3xl border border-forest/5 bg-white shadow-card transition hover:-translate-y-1 hover:shadow-cardHover sm:w-72">
-                  <div className="relative overflow-hidden">
+                  <div className="group/image relative overflow-hidden">
                     <PlantArt variant={p.art} potColor={p.potColor} backdrop={p.backdrop} className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <span className="absolute left-4 top-4 rounded-full bg-forest px-3 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-gold-200">
                       New

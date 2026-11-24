@@ -8,6 +8,40 @@ interface PlantArtProps {
   framed?: boolean;
 }
 
+interface PlantPhoto {
+  src: string;
+  hoverSrc: string;
+}
+
+const plantPhotos: Record<string, PlantPhoto> = {
+  monstera: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/13817e6d2a0d729c3048d9e03abc015f.webp' },
+  snake: { src: '/13817e6d2a0d729c3048d9e03abc015f.webp', hoverSrc: '/53fdf88bde04faa3c157bb8ce902bee5.webp' },
+  peacelily: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/uFCGiugwAeM3peA6Pipm87-1920-80.webp' },
+  rubber: { src: '/13817e6d2a0d729c3048d9e03abc015f.webp', hoverSrc: '/53fdf88bde04faa3c157bb8ce902bee5.webp' },
+  palm: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/13817e6d2a0d729c3048d9e03abc015f.webp' },
+  aloe: { src: '/cacti-cactus-succulent-flower.webp', hoverSrc: '/images%20(2).webp' },
+  fiddle: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/13817e6d2a0d729c3048d9e03abc015f.webp' },
+  pothos: { src: '/13817e6d2a0d729c3048d9e03abc015f.webp', hoverSrc: '/53fdf88bde04faa3c157bb8ce902bee5.webp' },
+  hibiscus: { src: '/cultivation-differen-flowers-greenhouse-pink-purple-red-geraniums-64854325.webp', hoverSrc: '/774a9e8f7c60d1be54a05f7af70134a9.webp' },
+  adenium: { src: '/cacti-cactus-succulent-flower.webp', hoverSrc: '/images%20(2).webp' },
+  jade: { src: '/images%20(2).webp', hoverSrc: '/cacti-cactus-succulent-flower.webp' },
+  rose: { src: '/57a4247612af829718d0432ec9a1e4df.webp', hoverSrc: '/774a9e8f7c60d1be54a05f7af70134a9.webp' },
+  indoor: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/13817e6d2a0d729c3048d9e03abc015f.webp' },
+  outdoor: { src: '/20191101_101708.webp', hoverSrc: '/ec23787be829aa904cdcd971ed3a3245.webp' },
+  flowering: { src: '/cultivation-differen-flowers-greenhouse-pink-purple-red-geraniums-64854325.webp', hoverSrc: '/774a9e8f7c60d1be54a05f7af70134a9.webp' },
+  succulents: { src: '/cacti-cactus-succulent-flower.webp', hoverSrc: '/images%20(2).webp' },
+  planters: { src: '/13817e6d2a0d729c3048d9e03abc015f.webp', hoverSrc: '/53fdf88bde04faa3c157bb8ce902bee5.webp' },
+  essentials: { src: '/20191101_101708.webp', hoverSrc: '/c401387af0f7e101d3528cf616996ae8.webp' },
+  living: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/13817e6d2a0d729c3048d9e03abc015f.webp' },
+  bedroom: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/13817e6d2a0d729c3048d9e03abc015f.webp' },
+  office: { src: '/13817e6d2a0d729c3048d9e03abc015f.webp', hoverSrc: '/53fdf88bde04faa3c157bb8ce902bee5.webp' },
+  balcony: { src: '/orig.webp', hoverSrc: '/pexels-kriss-30343587.webp' },
+  garden: { src: '/20191101_101708.webp', hoverSrc: '/61286284_446646582765047_2032776229848875008_n.webp' },
+  shelf: { src: '/53fdf88bde04faa3c157bb8ce902bee5.webp', hoverSrc: '/13817e6d2a0d729c3048d9e03abc015f.webp' },
+  hands: { src: '/13817e6d2a0d729c3048d9e03abc015f.webp', hoverSrc: '/53fdf88bde04faa3c157bb8ce902bee5.webp' },
+  watering: { src: '/20191101_101708.webp', hoverSrc: '/ec23787be829aa904cdcd971ed3a3245.webp' },
+};
+
 type Path = { d: string; fill?: string; stroke?: string; width?: number };
 
 const G = '#4A6B4E';
@@ -228,6 +262,28 @@ const sceneArt: Record<string, { shapes: Path[]; bg: string }> = {
 
 export default function PlantArt({ variant, potColor, backdrop, className = '', framed = true }: PlantArtProps) {
   const uid = useId().replace(/[:]/g, '');
+  const photo = plantPhotos[variant];
+  if (photo) {
+    return (
+      <div className={`group/plant-photo relative overflow-hidden ${className}`} aria-hidden="true">
+        <img
+          src={photo.src}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-500 group-hover/image:opacity-0"
+        />
+        <img
+          src={photo.hoverSrc}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover/image:opacity-100"
+        />
+      </div>
+    );
+  }
+
   const scene = sceneArt[variant];
   const isScene = Boolean(scene);
   const shapes = scene ? scene.shapes : leafPaths(variant);

@@ -111,7 +111,9 @@ export default function CartDrawer() {
                 <div className="flex-1 space-y-4 overflow-y-auto px-6 py-5">
                   {lines.map(({ line, product }) => (
                     <div key={line.id} className="flex gap-4 rounded-2xl border border-forest/8 bg-white p-3.5 shadow-card">
-                      <PlantArt variant={product!.art} potColor={product!.potColor} backdrop={product!.backdrop} className="h-20 w-16 shrink-0 rounded-xl" />
+                      <div className="group/image h-20 w-16 shrink-0 overflow-hidden rounded-xl">
+                        <PlantArt variant={product!.art} potColor={product!.potColor} backdrop={product!.backdrop} className="h-full w-full" />
+                      </div>
                       <div className="flex min-w-0 flex-1 flex-col">
                         <div className="flex items-start justify-between gap-2">
                           <p className="truncate font-display text-sm font-semibold text-forest">{product!.name}</p>
