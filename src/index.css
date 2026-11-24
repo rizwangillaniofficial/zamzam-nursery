@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  body {
+    @apply bg-ivory text-charcoal font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    line-height: 1.2;
+  }
+  ::selection {
+    @apply bg-gold-200 text-forest;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-7 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.14em] text-forest shadow-[0_8px_24px_rgba(201,163,92,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-300 hover:shadow-[0_12px_32px_rgba(201,163,92,0.55)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory;
+  }
+  .btn-forest {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-7 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.14em] text-ivory transition-all duration-300 hover:-translate-y-0.5 hover:bg-forest-600 hover:shadow-cardHover focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-forest/25 bg-transparent px-7 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.14em] text-forest transition-all duration-300 hover:border-gold hover:bg-gold/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+  }
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-ivory/40 bg-transparent px-7 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.14em] text-ivory transition-all duration-300 hover:border-gold hover:text-gold-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-forest;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-[0.3em] text-gold-600;
+  }
+  .eyebrow::before,
+  .eyebrow::after {
+    content: '';
+    @apply hidden h-px w-8 bg-gold/60 sm:inline-block;
+  }
+  .input-field {
+    @apply w-full rounded-xl border border-forest/15 bg-white px-4 py-3 font-body text-sm text-charcoal placeholder:text-forest/35 transition focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/25;
+  }
+  .focus-gold {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+  }
+}

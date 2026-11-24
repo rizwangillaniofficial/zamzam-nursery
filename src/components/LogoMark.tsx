@@ -1,0 +1,16 @@
+export default function LogoMark({ className = 'h-11 w-11' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 44 44" className={className} role="img" aria-hidden="true">
+      <rect width="44" height="44" rx="12" fill="#142E25" />
+      {/* gold ring */}
+      <circle cx="22" cy="22" r="16.5" fill="none" stroke="#C9A35C" strokeWidth="1.4" opacity="0.55" />
+      {/* crescent cradle */}
+      <path d="M22 35.5 A13.5 13.5 0 0 1 22 8.5 A11 11 0 0 0 22 35.5 Z" fill="#C9A35C" opacity="0.9" />
+      {/* main leaf */}
+      <path d="M22 33 C15.5 26.5 14 17.5 19 10.5 C26 13.5 27.5 24 23.5 32 Z" fill="#F8F5EC" />
+      <path d="M21.5 31.5 C19 25 19 17 21 12" stroke="#85977A" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      {/* side leaf */}
+      <path d="M24.5 31 C29 27 30.5 21 28 15.5 C23.5 18.5 22.5 26 24 30.5 Z" fill="#85977A" />
+    </svg>
+  );
+}
